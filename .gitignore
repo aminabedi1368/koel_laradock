@@ -1,0 +1,5 @@
+koel/node_modules/
+.idea/
+koel/vendor/
+koel/storage/logs/
+.DS_Store
