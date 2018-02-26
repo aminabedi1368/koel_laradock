@@ -2,4 +2,5 @@ koel/node_modules/
 .idea/
 koel/vendor/
 koel/storage/logs/
+koel/media_storage
 .DS_Store
