@@ -16,7 +16,8 @@ class UserStoreRequest extends Request
      */
     public function authorize()
     {
-        return auth()->user()->is_admin;
+//        return auth()->user()->is_admin;
+        return true;
     }
 
     /**

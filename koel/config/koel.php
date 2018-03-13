@@ -99,7 +99,9 @@ return [
     'download' => [
         'allow' => env('ALLOW_DOWNLOAD', true),
     ],
-
+    'upload' => [
+        'allow' => env('ALLOW_UPLOAD', true),
+    ],
     /*
     |--------------------------------------------------------------------------
     | Ignore Dot Files

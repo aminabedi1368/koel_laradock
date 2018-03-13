@@ -41,7 +41,7 @@ class LastfmController extends Controller
      */
     public function connect(Redirector $redirector, Lastfm $lastfm, JWTAuth $auth = null)
     {
-        abort_unless($lastfm->enabled(), 401, 'Koel is not configured to use with Last.fm yet.');
+        abort_unless($lastfm->enabled(), 401, 'gramatune is not configured to use with Last.fm yet.');
 
         $auth = $auth ?: $this->app['tymon.jwt.auth'];
 

@@ -73,7 +73,7 @@ class SyncMedia extends Command
      */
     protected function syncAll()
     {
-        $this->info('Koel syncing started.'.PHP_EOL);
+        $this->info('Gramatune syncing started.'.PHP_EOL);
 
         // Get the tags to sync.
         // Notice that this is only meaningful for existing records.

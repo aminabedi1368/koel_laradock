@@ -8,6 +8,8 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Foundation\Validation\ValidationException;
+use Illuminate\Http\Response;
+use function MongoDB\BSON\toJSON;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -47,8 +49,16 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+
         if ($e instanceof ModelNotFoundException) {
             $e = new NotFoundHttpException($e->getMessage(), $e);
+        }
+
+        if ($e instanceof \Illuminate\Validation\ValidationException)
+        {
+            $a = new \stdClass();
+            $a->message = $e;
+            return response()->json(['error' => $a->message->validator->customMessages], 422);
         }
 
         return parent::render($request, $e);

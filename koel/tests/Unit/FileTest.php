@@ -27,8 +27,8 @@ class FileTest extends TestCase
         $info = $file->getInfo();
 
         $expectedData = [
-            'artist' => 'Koel',
-            'album' => 'Koel Testing Vol. 1',
+            'artist' => 'Gramatune',
+            'album' => 'Gramatune Testing Vol. 1',
             'compilation' => false,
             'title' => 'Amet',
             'track' => 5,

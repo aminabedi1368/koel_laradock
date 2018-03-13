@@ -84,7 +84,7 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
      *
      * @return $this
      */
-    protected function login($username = 'koel@example.com', $password = 'SoSecureK0el')
+    protected function login($username = 'user@gmail.com', $password = '123456')
     {
         $this->typeIn("#app > div.login-wrapper > form > [type='email']", $username);
         $this->typeIn("#app > div.login-wrapper > form > [type='password']", $password);
@@ -103,7 +103,7 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
     protected function loginAndWait()
     {
         $this->login()
-            ->seeText('Koel Admin', '#userBadge > a.view-profile');
+            ->seeText('Gramatune Admin', '#userBadge > a.view-profile');
 
         return $this;
     }

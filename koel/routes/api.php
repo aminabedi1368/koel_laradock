@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 Route::group(['namespace' => 'API'], function () {
     Route::post('me', 'AuthController@login');
     Route::delete('me', 'AuthController@logout');
+    Route::resource('register', 'UserController');
 
     Route::group(['middleware' => 'jwt.auth'], function () {
         Route::get('/', function () {
@@ -69,6 +70,15 @@ Route::group(['namespace' => 'API'], function () {
         // Download routes
         Route::group(['prefix' => 'download', 'namespace' => 'Download'], function () {
             Route::get('songs', 'SongController@download');
+            Route::get('album/{album}', 'AlbumController@download');
+            Route::get('artist/{artist}', 'ArtistController@download');
+            Route::get('playlist/{playlist}', 'PlaylistController@download');
+            Route::get('favorites', 'FavoritesController@download');
+        });
+
+        // Upload routes
+        Route::group(['prefix' => 'Upload', 'namespace' => 'Upload'], function () {
+            Route::post('mp3List', 'UploadController@Upload');
             Route::get('album/{album}', 'AlbumController@download');
             Route::get('artist/{artist}', 'ArtistController@download');
             Route::get('playlist/{playlist}', 'PlaylistController@download');
