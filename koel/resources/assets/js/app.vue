@@ -18,6 +18,9 @@
 
     <div class="login-wrapper" v-else>
       <login-form @loggedin="onUserLoggedIn"/>
+      <div>
+        <a href="https://gramatune.com/register-3/" target="_blank"> Signup </a>
+      </div>
     </div>
   </div>
 </template>

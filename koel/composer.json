@@ -1,6 +1,6 @@
 {
     "name": "phanan/koel",
-    "description": "Personal audio streaming service that works.",
+    "description": "rock audio streaming service.",
     "keywords": ["audio", "stream", "mp3"],
     "license": "MIT",
     "type": "project",
