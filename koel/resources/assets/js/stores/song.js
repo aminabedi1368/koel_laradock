@@ -85,7 +85,7 @@ export const songStore = {
       }
 
       song.liked = interaction.liked
-      song.playCount = interaction.play_count
+      song.playCount = interaction.sum_play_count
       song.album.playCount += song.playCount
       song.artist.playCount += song.playCount
 
