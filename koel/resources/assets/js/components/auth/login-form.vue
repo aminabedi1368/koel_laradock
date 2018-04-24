@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="login" :class="{ error: failed }">
-    <input v-model="email"    type="email"    placeholder="Guest Login:guest@gramatune.com"  value="guest@gramatune.com" autofocus required>
-    <input v-model="password" type="password" placeholder="Guest Password:123456 "          value="123456" required>
+    <input v-model="email"    type="email"    placeholder="Guest Login:guest@gramatune.com" data-value="guest@gramatune.com" autofocus required>
+    <input v-model="password" type="password" placeholder="Guest Password:123456 "          data-value="123456" required>
     <button type="submit">Log In</button>
   </form>
 </template>
