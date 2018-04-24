@@ -31,8 +31,9 @@ class DataController extends Controller
             'playlists' => Playlist::byCurrentUser()->orderBy('name')->get()->toArray(),
             'interactions' => Interaction::byCurrentUser()->get(),
              //   SELECT *,SUM(play_count) as sum_play_count FROM interactions GROUP by song_id ORDER BY sum_play_count DESC
-            'mostPlay' => DB::table('interactions')->select('*',DB::raw('count(play_count) as sum_play_count'))->groupBy('song_id')
+            'mostPlay' => DB::table('interactions')->select('song_id','liked','play_count',DB::raw('count(play_count) as sum_play_count'))->groupBy('song_id')
                 ->orderBy('sum_play_count', 'desc')
+                ->take(20)
                 ->get(),
             'users' => $request->user()->is_admin ? User::all() : [],
             'currentUser' => $request->user(),
