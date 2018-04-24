@@ -26,16 +26,12 @@ class DataController extends Controller
      */
     public function index(Request $request)
     {
-        dd( DB::table('interactions')->select('*',DB::raw('count(play_count) as sum_play_count'))->groupBy('song_id')
-            ->orderBy('sum_play_count', 'desc')
-            ->take(20)
-            ->get());
         return response()->json(MediaCache::get() + [
             'settings' => $request->user()->is_admin ? Setting::pluck('value', 'key')->all() : [],
             'playlists' => Playlist::byCurrentUser()->orderBy('name')->get()->toArray(),
             'interactions' => Interaction::byCurrentUser()->get(),
              //   SELECT *,SUM(play_count) as sum_play_count FROM interactions GROUP by song_id ORDER BY sum_play_count DESC
-            'mostPlay' => DB::table('interactions')->select('*',DB::raw('count(play_count) as sum_play_count'))->groupBy('song_id')
+            'mostPlay' => DB::table('interactions')->select('*',DB::raw('SUM(play_count) as sum_play_count'))->groupBy('song_id')
                 ->orderBy('sum_play_count', 'desc')
                 ->take(20)
                 ->get(),
