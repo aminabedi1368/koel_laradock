@@ -9,6 +9,7 @@ use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use iTunes;
 use Lastfm;
 use MediaCache;
@@ -29,6 +30,10 @@ class DataController extends Controller
             'settings' => $request->user()->is_admin ? Setting::pluck('value', 'key')->all() : [],
             'playlists' => Playlist::byCurrentUser()->orderBy('name')->get()->toArray(),
             'interactions' => Interaction::byCurrentUser()->get(),
+             //   SELECT *,SUM(play_count) as sum_play_count FROM interactions GROUP by song_id ORDER BY sum_play_count DESC
+            'mostPlay' => DB::table('interactions')->select('*',DB::raw('count(play_count) as sum_play_count'))->groupBy('song_id')
+                ->orderBy('sum_play_count', 'desc')
+                ->get(),
             'users' => $request->user()->is_admin ? User::all() : [],
             'currentUser' => $request->user(),
             'useLastfm' => Lastfm::used(),
